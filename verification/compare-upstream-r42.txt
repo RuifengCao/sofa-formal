@@ -1,0 +1,39 @@
+Challenge imports: [Init, Init, Mathlib]
+same statement: MovingSofa.GerversSofa.ABφθSpec.existsUnique
+same statement: MovingSofa.isMovingSofa_gerversSofa
+same statement: MovingSofa.sofaConstant_eq
+same statement: MovingSofa.sofaConstant_eq_volume_gerversSofa
+compared 28 Challenge declarations used by the statements: [fact_finrank_euclideanSpace_fin_two,
+ Module.orientedEuclideanSpaceFinTwo,
+ MovingSofa.IsMovingSofa,
+ MovingSofa.gerversSofa,
+ MovingSofa.hallway,
+ MovingSofa.horizontalHallway,
+ MovingSofa.instTopologicalSpaceAffineIsometryEquivRealEuclideanSpaceFinOfNatNat_sofaSubmission,
+ MovingSofa.rotateTranslate,
+ MovingSofa.sofaConstant,
+ MovingSofa.sofaOfRotateTranslatePath,
+ MovingSofa.verticalHallway,
+ Module.orientedEuclideanSpaceFinTwo._proof_1,
+ Module.orientedEuclideanSpaceFinTwo._proof_2,
+ MovingSofa.GerversSofa.A,
+ MovingSofa.GerversSofa.ABφθSpec,
+ MovingSofa.GerversSofa.B,
+ MovingSofa.GerversSofa.p,
+ MovingSofa.GerversSofa.r,
+ MovingSofa.GerversSofa.x,
+ MovingSofa.GerversSofa.y,
+ MovingSofa.GerversSofa.θ,
+ MovingSofa.GerversSofa.φ,
+ MovingSofa.IsMovingSofa.mk,
+ MovingSofa.sofaConstant._proof_1,
+ MovingSofa.sofaConstant._proof_2,
+ MovingSofa.GerversSofa.ABφθSpec._proof_1,
+ MovingSofa.GerversSofa.ABφθSpec._proof_2,
+ MovingSofa.GerversSofa.ABφθSpec.existsUnique]
+MovingSofa.GerversSofa.ABφθSpec.existsUnique uses axioms [propext, Classical.choice, Quot.sound]
+MovingSofa.isMovingSofa_gerversSofa uses axioms [propext, Classical.choice, Quot.sound]
+MovingSofa.sofaConstant_eq uses axioms [propext, Classical.choice, Quot.sound]
+MovingSofa.sofaConstant_eq_volume_gerversSofa uses axioms [propext, Classical.choice, Quot.sound]
+RESULT: OK
+exit=0 secs=50

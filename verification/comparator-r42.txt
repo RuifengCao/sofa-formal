@@ -1,0 +1,21 @@
+Building SofaSubmission.Challenge
+WARNING: THIS IS NOT REAL LANDRUN! UNSAFELY RUNNING exec lake build SofaSubmission.Challenge
+⚠ [8706/8706] Replayed SofaSubmission.Challenge
+warning: SofaSubmission/Challenge.lean:169:8: declaration uses `sorry`
+warning: SofaSubmission/Challenge.lean:211:8: declaration uses `sorry`
+warning: SofaSubmission/Challenge.lean:227:8: declaration uses `sorry`
+warning: SofaSubmission/Challenge.lean:231:8: declaration uses `sorry`
+warning: SofaSubmission/Challenge.lean:241:8: declaration uses `sorry`
+Build completed successfully (8706 jobs).
+WARNING: THIS IS NOT REAL LANDRUN! UNSAFELY RUNNING exec <comparator>/.lake/packages/lean4export/.lake/build/bin/lean4export SofaSubmission.Challenge -- MovingSofa.GerversSofa.ABφθSpec.existsUnique MovingSofa.isMovingSofa_gerversSofa MovingSofa.sofaConstant_eq MovingSofa.sofaConstant_eq_volume_gerversSofa propext Quot.sound Classical.choice Nat.add Nat.sub Nat.mul Nat.pow Nat.gcd Nat.div Nat.mod Nat.beq Nat.ble Nat.land Nat.lor Nat.xor Nat.shiftLeft Nat.shiftRight String.ofList Char.ofNat List eagerReduce
+Exporting #[MovingSofa.GerversSofa.ABφθSpec.existsUnique, MovingSofa.isMovingSofa_gerversSofa, MovingSofa.sofaConstant_eq, MovingSofa.sofaConstant_eq_volume_gerversSofa, propext, Quot.sound, Classical.choice, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from SofaSubmission.Challenge
+Building SofaSubmission.Solution
+WARNING: THIS IS NOT REAL LANDRUN! UNSAFELY RUNNING exec lake build SofaSubmission.Solution
+✔ [8790/8790] Built SofaSubmission.Solution (242s)
+Build completed successfully (8790 jobs).
+WARNING: THIS IS NOT REAL LANDRUN! UNSAFELY RUNNING exec <comparator>/.lake/packages/lean4export/.lake/build/bin/lean4export SofaSubmission.Solution -- MovingSofa.GerversSofa.ABφθSpec.existsUnique MovingSofa.isMovingSofa_gerversSofa MovingSofa.sofaConstant_eq MovingSofa.sofaConstant_eq_volume_gerversSofa propext Quot.sound Classical.choice Nat.add Nat.sub Nat.mul Nat.pow Nat.gcd Nat.div Nat.mod Nat.beq Nat.ble Nat.land Nat.lor Nat.xor Nat.shiftLeft Nat.shiftRight String.ofList Char.ofNat List eagerReduce
+Exporting #[MovingSofa.GerversSofa.ABφθSpec.existsUnique, MovingSofa.isMovingSofa_gerversSofa, MovingSofa.sofaConstant_eq, MovingSofa.sofaConstant_eq_volume_gerversSofa, propext, Quot.sound, Classical.choice, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from SofaSubmission.Solution
+Running Lean default kernel on solution.
+Lean default kernel accepts the solution
+Your solution is okay!
+exit=0 secs=1406
