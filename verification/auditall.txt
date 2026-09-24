@@ -1,0 +1,5 @@
+# lake env lean scripts/AuditAll.lean -- run on 2026-09-24 against the Lean files of commit 838baca
+# (Lean 4.33.1, Mathlib v4.33.1); exit=0
+theorems: 3773, other constants: 688; union of axioms: [Quot.sound,
+ Classical.choice,
+ propext]; constants with other axioms: 0 []

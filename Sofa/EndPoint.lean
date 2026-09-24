@@ -1,5 +1,5 @@
 /-
-# Sofa/EndPoint.lean — closing the endpoint-angle gap, and `f_K(0) = 1`
+# Sofa/EndPoint.lean — the extreme angles `t = δ`, `t = (n−1)δ`, and `f_K(0) = 1`
 
 Baek's Lemma 6.5.2 uses `f_K(0) = 1`, justified only in the informal sketch §1.7.3 ("because the
 point `A(0)` should be on the x-axis").  Rigorously it splits in two:
@@ -7,10 +7,15 @@ point `A(0)` should be on the x-axis").  Rigorously it splits in two:
 * `e^{min}_K(0) = 0` for **every** cap with `ω = π/2` (`edgeMin_zero_of_isCap`): the point
   `(h_K(0), 0)` lies in `K`, because `⟪(h_K(0),0), u_r⟫ ≤ ⟪v⁺_K(0), u_r⟫` for every normal angle
   `r` with `sin r ≥ 0`, and `capAngles (π/2) = [0, π] ∪ {3π/2}`;
-* `σ_K({0}) = |e_K(0)| = 0`, which is Theorem 6.4.3 on `I = [0, b)`.  Its proof needs Theorem
-  6.3.3 at the endpoint angle `t = δ`, where `t − δ = 0 ∉ Θ` — the gap of `blueprint §19.4`.
+* `σ_K({0}) = |e_K(0)| = 0`, which is Theorem 6.4.3 on `I = [0, b)`.  Its proof uses Theorem
+  6.3.3 at the extreme angle `t = δ`, where `t − δ = 0 ∉ Θ`.
 
-This file closes that gap with a *different* bound, which needs no neighbouring angles at all.
+An earlier version of this comment (and `blueprint §19.4`) called this a gap in the paper.  It is
+not: Baek's proof of Theorem 6.3.3 holds at `t = δ` and `t = (n−1)δ`, because `Q⁻_K(0)` and
+`Q⁻_K(π/2)` lie in `y < 0` and because `0` and `π` lie in the normal cones of the vertices that
+the proof uses (see the correction in `blueprint §19.4`).
+
+This file uses a *different* bound at the extreme angles, which needs no neighbouring angles.
 For a maximum polygon cap the balanced condition (Thm 3.4.9) gives `σ(t) = τ(t)`, and the niche
 side at normal `t` is trapped between the fan floor `y = 0` and the inner wall `d_t`, so
 

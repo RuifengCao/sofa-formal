@@ -251,7 +251,7 @@ theorem fixed_unique {x y : ℝ × ℝ} (hx : x ∈ boxSet target) (hy : y ∈ b
 /-- The tight box: half-width `2¹⁰` units, i.e. `2⁻³⁰ ≈ 9.3 · 10⁻¹⁰`. -/
 def tbox : Iv × Iv := (⟨cφ₀ - 1024, cφ₀ + 1024⟩, ⟨cθ₀ - 1024, cθ₀ + 1024⟩)
 
-/-- `|G(center)| ≤ 2⁻⁴¹ = (1 − 1/2) · 2⁻³⁰` in both coordinates. -/
+/-- `|G(center)| ≤ 2⁻³¹ = (1 − 1/2) · 2⁻³⁰` in both coordinates. -/
 def mapOK : Bool :=
   decide (2 * (G1E.ieval (boxOf cφ₀ cφ₀ cθ₀ cθ₀)).mag ≤ 1024)
     && decide (2 * (G2E.ieval (boxOf cφ₀ cφ₀ cθ₀ cθ₀)).mag ≤ 1024)

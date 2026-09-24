@@ -28,11 +28,15 @@ All four proofs use only `propext`, `Classical.choice`, `Quot.sound`.
   instance after the module's root namespace and shares auxiliary proofs (e.g. of
   `Nat.AtLeastTwo 2`) only within a file; this makes the declarations behind the upstream
   statements literally equal to those of `Challenge.lean`.
-* `SofaSubmission/Challenge.lean`: the whole upstream file, verbatim, with its `sorry`s. It imports
-  only Mathlib. Differences from upstream, all forced by building without the formal-conjectures
-  library: `import Mathlib` instead of `FormalConjecturesUtil`; no `@[category …]`/`formal_proof`
+* `SofaSubmission/Challenge.lean`: the whole upstream file with its `sorry`s. It imports only
+  Mathlib. It differs from the upstream file at commit `0771383` in five syntactic ways, which let
+  it build without the formal-conjectures library and leave the definitions and statements
+  unchanged: `import Mathlib` instead of `FormalConjecturesUtil`; no module-system header
+  (`module`, `public import`, `@[expose] public section`); no `@[category …]`/`formal_proof`
   attributes; `answer(volume gerversSofa)` written `volume gerversSofa`; the `ℝ²` notation and two
-  instances copied from `FormalConjecturesForMathlib/Geometry/2d.lean`.
+  instances copied from `FormalConjecturesForMathlib/Geometry/2d.lean`. (Its header names the
+  commit `40e7c98` from which it was first copied; the upstream file changed after that only in
+  its module-system header and in two `formal_proof` attributes.)
 * `SofaSubmission/Solution.lean`: the same theorems with proofs (it imports `Sofa.Main`).
 * `comparator.json`: configuration for [comparator](https://github.com/leanprover/comparator).
 
@@ -67,49 +71,27 @@ solution` and `Your solution is okay!` after 23 minutes on a 2-core, 8 GB machin
 `verification/comparator-r42.txt`. The lighter `lake env lean scripts/CompareUpstream.lean` prints
 `RESULT: OK` (`verification/compare-upstream-r42.txt`).
 
-## Proposed upstream change
+**Second run (2026-09-24):** a verification of commit `838baca` ran comparator v4.33.0 against a
+challenge generated mechanically from the upstream file at commit `0771383` (apart from comments,
+identical to `Challenge.lean`), with nanoda 0.4.19 enabled. It printed `Nanoda kernel accepts the
+solution`, `Lean default kernel accepts the solution` and `Your solution is okay!`. The report is
+posted on TheJustinSunPrize/awards#4441.
 
-1. Sign the Google CLA; open an issue ("Second formal proof for the moving sofa results; first
-   formal proof link for `ABφθSpec.existsUnique`").
-2. Publish this repository with a release tag, e.g. `https://github.com/<you>/sofa-formal/releases/tag/v1.0.0`.
-3. The PR changes only attributes:
+## Upstream submission
 
-```diff
- /-- There exist unique constants $A$, $B$, $\varphi$, and $\theta$ satisfying the spec. -/
--@[category textbook, AMS 49]
-+@[category textbook, AMS 49,
-+  formal_proof using lean4 at "https://github.com/<you>/sofa-formal/releases/tag/v1.0.0"]
- theorem ABφθSpec.existsUnique : ∃! ABφθ : ℝ × ℝ × ℝ × ℝ,
-@@
- @[category research solved, AMS 49,
--  formal_proof using lean4 at "https://github.com/dawidmtrela-dotcom/GerverSofaLean/releases/tag/v1.1.0"]
-+  formal_proof using lean4 at "https://github.com/dawidmtrela-dotcom/GerverSofaLean/releases/tag/v1.1.0",
-+  formal_proof using lean4 at "https://github.com/<you>/sofa-formal/releases/tag/v1.0.0"]
- theorem isMovingSofa_gerversSofa : ∃ m, IsMovingSofa gerversSofa m := by
-@@
- @[category research solved, AMS 49,
--  formal_proof using lean4 at "https://github.com/deancureton/MovingSofa/releases/tag/v1.0.0"]
-+  formal_proof using lean4 at "https://github.com/deancureton/MovingSofa/releases/tag/v1.0.0",
-+  formal_proof using lean4 at "https://github.com/<you>/sofa-formal/releases/tag/v1.0.0"]
- theorem sofaConstant_eq : sofaConstant = answer(volume gerversSofa) := by
-@@
- @[category research solved, AMS 49,
--  formal_proof using lean4 at "https://github.com/deancureton/MovingSofa/releases/tag/v1.0.0"]
-+  formal_proof using lean4 at "https://github.com/deancureton/MovingSofa/releases/tag/v1.0.0",
-+  formal_proof using lean4 at "https://github.com/<you>/sofa-formal/releases/tag/v1.0.0"]
- theorem sofaConstant_eq_volume_gerversSofa : sofaConstant = volume gerversSofa := by
-```
+Issue google-deepmind/formal-conjectures#6525 and PR #6526 (open on 2026-09-24). The PR changes
+attributes only: it adds `formal_proof using lean4` links to this repository, as permalinks to
+commit `838baca` with line numbers, and keeps every upstream proof `sorry`.
 
-Draft PR description:
+| Upstream declaration | Link target |
+|---|---|
+| `GerversSofa.ABφθSpec.existsUnique` | `SofaSubmission/Defs.lean#L173` (first link) |
+| `isMovingSofa_gerversSofa` | `SofaSubmission/Solution.lean#L20` (second link) |
+| `sofaConstant_eq` | `SofaSubmission/Solution.lean#L26` (second link) |
+| `sofaConstant_eq_volume_gerversSofa` | `SofaSubmission/Solution.lean#L30` (second link) |
 
-> Adds a second, independent Lean 4 formalization of Baek's proof that Gerver's sofa is optimal
-> (and of `isMovingSofa_gerversSofa`), and an independent proof of `ABφθSpec.existsUnique`
-> (existence and uniqueness of Gerver's constants, by interval arithmetic), which has no
-> `formal_proof` link yet. The proof repository
-> pins Lean v4.33.1 and Mathlib v4.33.1 — the same versions as formal-conjectures — contains a
-> verbatim copy of `MovingSofa.lean` as `SofaSubmission/Challenge.lean`, and a `comparator.json`
-> for checking the four theorems against it; axioms: `propext`, `Classical.choice`, `Quot.sound`.
-> Only attributes change in this PR; no statement is modified.
+At the reviewer's request the PR also pins the two existing links of `sofaConstant_eq` and
+`sofaConstant_eq_volume_gerversSofa` to a commit in the same way.
 
 Notes for a check against the upstream file itself (rather than `Challenge.lean`):
 `answer(x)` upstream elaborates to `x` wrapped in an `mdata` annotation (`FormalConjecturesUtil/Answer.lean`,

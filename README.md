@@ -15,8 +15,12 @@ Gerver's sofa attains the maximal area of a moving sofa. No `sorry` is used, and
 Lean's standard three. The build and the axiom audit (`Sofa/Check.lean`) have been reproduced on a
 second machine (Windows); the audit output was identical line by line.
 
+Since release v1.0.0 (commit `838baca`), only comments and documentation have changed and the audit
+script `scripts/AuditAll.lean` has been added; the Lean definitions and proofs are those of v1.0.0.
+
 Proved statements of the upstream file (see `UPSTREAM.md`). comparator checked them against a
-verbatim copy of that file (`comparator.json`) and passed:
+copy of that file (`comparator.json`; five syntactic differences, listed in `UPSTREAM.md`) and
+passed:
 
 | Upstream | Here |
 |---|---|
@@ -59,7 +63,7 @@ lake build                  # 8794 jobs; the only warnings are the `sorry`s of S
 ```
 
 Building the project itself (after the Mathlib cache) took about 40 minutes of CPU time on a
-Windows laptop (round 41). Modules that do not depend on each other build in parallel, and the
+Windows PC (round 41). Modules that do not depend on each other build in parallel, and the
 longest chain of dependent modules is estimated at about 20 minutes. The slowest module is
 `GerverConn` (≈ 75 s, mostly kernel-checked interval arithmetic); everything else takes seconds to
 tens of seconds beyond loading Mathlib.
@@ -74,19 +78,32 @@ Expected: `exit=0`, `0`, and six lines — the main theorem and the four upstrea
 ending in `[propext, Classical.choice, Quot.sound]`. Every line of `check.txt` lists a subset of these
 three axioms (the interval-arithmetic definitions use fewer or none).
 
+`Sofa/Check.lean` lists 1473 named results. To check every constant of the development instead
+(everything declared in `Sofa/` and `SofaSubmission/` except `Challenge.lean`, which keeps the
+upstream `sorry`s, and the audit files):
+
+```bash
+lake env lean scripts/AuditAll.lean
+```
+
+Expected: `theorems: 3773, other constants: 688`, the union of the axioms used is
+`propext`, `Classical.choice`, `Quot.sound`, and `constants with other axioms: 0`
+(`verification/auditall.txt`).
+
 ## Layout
 
 * `SofaSubmission/Defs.lean` — the upstream definitions: `Challenge.lean` without its `sorry`ed
   theorems and with `ABφθSpec.existsUnique` proved. Every module of the proof imports it.
 * `Sofa/*.lean` — the proof, one module per section or theorem of the paper; `Sofa.lean` imports all.
-  Each module imports only the modules whose declarations it uses, so independent chapters build in
-  parallel.
-* `Sofa/Check.lean` — the axiom audit (every named result).
+  The imports of each module were derived from the declarations it uses, so independent chapters
+  build in parallel.
+* `Sofa/Check.lean` — the axiom audit of 1473 named results; `scripts/AuditAll.lean` checks every
+  constant.
 * `SofaSubmission/Challenge.lean`, `SofaSubmission/Solution.lean`, `comparator.json` — the upstream
   statements and their proofs, for comparator (`UPSTREAM.md`).
 * `blueprint/` — the proof blueprint, written from the paper before and during the formalization.
   Its status flags record the plan at the time of writing.
-* `verification/` — outputs of the axiom audit, `scripts/CompareUpstream.lean` and comparator.
+* `verification/` — outputs of the axiom audits, `scripts/CompareUpstream.lean` and comparator.
 
 A few source comments cite `PLAN.md`, the author's development plan, which is not part of this
 repository.
