@@ -79,9 +79,10 @@ posted on TheJustinSunPrize/awards#4441.
 
 ## Upstream submission
 
-Issue google-deepmind/formal-conjectures#6525 and PR #6526 (open on 2026-09-24). The PR changes
-attributes only: it adds `formal_proof using lean4` links to this repository, as permalinks to
-commit `838baca` with line numbers, and keeps every upstream proof `sorry`.
+Issue google-deepmind/formal-conjectures#6525 and PR #6526. The PR was merged on 2026-09-24 as
+commit `b022feb`, and the issue was closed. The PR changed attributes only: it added
+`formal_proof using lean4` links to this repository, as permalinks to commit `838baca` with line
+numbers, and kept every upstream proof `sorry`.
 
 | Upstream declaration | Link target |
 |---|---|
@@ -90,11 +91,11 @@ commit `838baca` with line numbers, and keeps every upstream proof `sorry`.
 | `sofaConstant_eq` | `SofaSubmission/Solution.lean#L26` (second link) |
 | `sofaConstant_eq_volume_gerversSofa` | `SofaSubmission/Solution.lean#L30` (second link) |
 
-At the reviewer's request the PR also pins the two existing links of `sofaConstant_eq` and
+At the reviewer's request the PR also pinned the two existing links of `sofaConstant_eq` and
 `sofaConstant_eq_volume_gerversSofa` to a commit in the same way.
 
 Notes for a check against the upstream file itself (rather than `Challenge.lean`):
 `answer(x)` upstream elaborates to `x` wrapped in an `mdata` annotation (`FormalConjecturesUtil/Answer.lean`,
 `mkAnnotation `answer`). The kernel ignores `mdata`, but a structural comparison of statements does
 not, so such a check has to put the same annotation on `sofaConstant_eq` in the solution. The
-`formal_proof` linter requires the upstream proofs to stay `sorry`; this PR keeps them.
+`formal_proof` linter requires the upstream proofs to stay `sorry`; this PR kept them.

@@ -4,6 +4,10 @@ A formalization of J. Baek, *Optimality of Gerver's Sofa* (arXiv:2411.19826, 202
 Mathlib, for the definitions of google-deepmind/formal-conjectures
 (`FormalConjectures/Wikipedia/MovingSofa.lean`).
 
+Technical report: R. Cao, *An independent Lean 4 formalization of the optimality of Gerver's sofa*,
+Zenodo, 2026, [doi:10.5281/zenodo.23347251](https://doi.org/10.5281/zenodo.23347251). It describes
+release v1.0.0.
+
 ## Status (2026-09-23, round 42)
 
 ```lean
